@@ -18,13 +18,6 @@ class post(models.Model):
     
     
 
-    def validate_image(thumbnail):
-        max_height = 8000
-        max_width = 8000
-        height = thumbnail.height
-        width = thumbnail.width
-        if width > max_width or height > max_height:
-            raise ValidationError("Height or Width is larger than what is allowed")
     thumbnail=models.ImageField(blank='true',validators=[validate_image],upload_to='media')
 
 
