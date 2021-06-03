@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block body%}
+<div class ="container">
+
+
+      <h3 class="pb-2 mb-4  my-3 fst-italic border-bottom">
+        Contact Bloggitt:
+      </h3>
+      <br>
+
+<form action= '/contact'method="POST">
+
+{%csrf_token%}
+
+{{form|crispy}}
+
+<br>
+
+<button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+</div>
+{% endblock body%}

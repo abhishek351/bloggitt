@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+
+{% block body%}
+
+<main class="container">
+  <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark my-2">
+    <div class="col-md-6 px-0">
+      <h1 class="display-4 fst-italic">Blogger Diaries</h1>
+      <p class="lead my-3">Bloggitt is a blogging website that allows users to post their thoughts and knowledge with others.</p>
+      
+      
+      </div>
+  </div>
+<br>
+
+
+
+{% if user.is_authenticated %}
+<center>
+<a href="blogform" class="btn btn-primary btn-lg " role="button" aria-pressed="true">ADD-BLOGS</a>
+ </center>   
+  </button>
+
+  {%endif%}
+    <br>
+      <h3 class="fst-italic">
+        POPULAR BLOGS:
+      </h3>
+      <hr>
+      
+    <br>
+
+
+  
+  
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+{% for POST in page_obj %}
+
+
+       <div class="col">
+    <div class="card h-100">
+    {% if POST.thumbnail %}
+           <img class= " img-responsive image-resize" src="{{POST.thumbnail.url}}" >
+    {% endif %}  
+      <style>
+img {
+  width: 100%;
+  height: auto;
+}
+</style>
+      
+      <div class="card-body" style="background-color: ghostwhite">
+        <h3 class="mb-0">{{POST.title|capfirst}}</h3>
+        <small class="text-muted">{{POST.time |date:"D d M Y"}} </small>
+        <br>
+        <p class="card-text mb-auto">{{POST.desc|truncatechars:70|capfirst}}</p>
+      <a href="blogview/{{POST.slug}}" class="link ">Continue reading</a><br>
+        <br><strong class="d-inline-block mb-2 text-primary">By {{POST.user.first_name|capfirst}}</strong>&nbsp
+        
+
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  </div>
+
+
+
+
+
+<br><br>
+<nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-end">
+        {% if page_obj.has_previous %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+          </li>
+        {% else %}
+          <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+          </li>
+        {% endif %}
+        {% for i in page_obj.paginator.page_range %}
+          {% if page_obj.number == i %}
+            <li class="page-item active" aria-current="page">
+              <span class="page-link">
+                {{ i }}
+                <span class="sr-only"></span>
+              </span>
+            </li>
+          {% else %}
+            <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+          {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+          </li>
+        {% else %}
+          <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Next</a>
+          </li>
+        {% endif %}
+      </ul>
+    </nav>
+    
+
+
+
+
+
+
+
+
+
+{% endblock body%}

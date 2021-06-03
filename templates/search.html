@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+
+{% block body%}
+
+<div class= "container">
+<br>
+      <h3 class="pb-2 mb-4  my-3 fst-italic border-bottom">
+        Search Results:
+      </h3>
+      
+    <br>
+   
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+{% for POST in allpost %}
+
+
+       <div class="col">
+    <div class="card h-100">
+    {% if POST.thumbnail %}
+           <img src="{{POST.thumbnail.url}}" width="100%" height="50%"/>
+    {% endif %}  
+      
+      
+      <div class="card-body" style="background-color: ghostwhite">
+        <h3 class="mb-0">{{POST.title|capfirst}}</h3>
+        <small class="text-muted">{{POST.time |timesince}} ago</small>
+        <br>
+        <p class="card-text mb-auto">{{POST.desc|truncatechars:50|capfirst}}</p>
+      <a href="blogview/{{POST.slug}}" class="stretched-link ">Continue reading</a><br>
+        <br><strong class="d-inline-block mb-2 text-primary">by author</strong>&nbsp
+      
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  </div>
+</div>
+{% endblock body%}

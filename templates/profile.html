@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags%}
+{% block body%}
+
+
+
+
+<center>
+<div class="content mx-3 my-4">
+  <div class= "media">
+{% if user.profile.image %}
+    <img class="rounded-circle account-img" src="{{user.profile.image.url}}" width="304" height="236">
+{% else %}
+    <img class="rounded-circle account-img" src="{% static '7.png' %}" width="304" height="236">  
+{% endif %}
+    
+    </div>
+</div>
+</center>
+
+
+<div class ="container">
+<br>
+      <h3 class="fst-italic ">
+        UPDATE PROFILE:
+      </h3>
+      <hr>
+      
+    <br>
+    </div>
+<div class ="container">
+<form method ="POST"  enctype="multipart/form-data">
+{% csrf_token%}
+
+{{form1|crispy}}
+
+{{form2|crispy}}
+
+<br>
+    <button type="submit" class="btn btn-primary" >UPDATE</button>
+</form>
+
+
+
+
+<br>
+      <h3 class="fst-italic">
+        YOUR BLOGS:
+      </h3>
+      <hr>
+      
+    <br>
+
+
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+{% for form in myform %}
+
+
+       <div class="col">
+    <div class="card h-100">
+    {% if form.thumbnail %}
+           <img src="{{form.thumbnail.url}}" width="100%" height="50%"/>
+    {% endif %}  
+      
+      
+      <div class="card-body" style="background-color: ghostwhite">
+        <h3 class="mb-0">{{form.title|capfirst}}</h3>
+        <small class="text-muted">{{form.time |date:"D d M Y"}} </small>
+        <br>
+        <p class="card-text mb-auto">{{form.desc|truncatechars:70|capfirst}}</p>
+      <a href="blogview/{{form.slug}}" class="link ">Continue reading</a><br>
+        <br><strong class="d-inline-block mb-2 text-primary">By {{form.user.first_name|capfirst}}</strong>&nbsp
+    </br><a href="{% url 'delete_blog' form.Sno %}" class="btn btn-danger" role="button" aria-pressed="true">Delete</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  </div>
+
+</div>
+{% endblock body %} 
