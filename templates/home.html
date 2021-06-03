@@ -41,14 +41,10 @@
        <div class="col">
     <div class="card h-100">
     {% if POST.thumbnail %}
-           <img class= " img-responsive image-resize" src="{{POST.thumbnail.url}}" >
+           <img class= " img-responsive image-resize" src="{{POST.thumbnail.url}}" width: "100"
+  height: "auto">
     {% endif %}  
-      <style>
-img {
-  width: 100%;
-  height: auto;
-}
-</style>
+   
       
       <div class="card-body" style="background-color: ghostwhite">
         <h3 class="mb-0">{{POST.title|capfirst}}</h3>
