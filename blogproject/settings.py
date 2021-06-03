@@ -34,7 +34,7 @@ SECRET_KEY = '&a3k2f_s^f-chj*h)82g^@65d#r#%c!e2=_w4a(nqfqcnp4+p)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://bloggitt.herokuapp.com/']
+ALLOWED_HOSTS = ['bloggitt.herokuapp.com']
 
 
 
