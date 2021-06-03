@@ -70,7 +70,7 @@ ROOT_URLCONF = 'blogproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['C:/Users/lalita/Desktop/vs code/blogproject/templates'],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -151,6 +151,6 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
-DIRS: [os.path.join(BASE_DIR, 'templates')],
+
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
