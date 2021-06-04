@@ -42,15 +42,7 @@
     <div class="card h-100">
     {% if POST.thumbnail %}
           <img class= " img-responsive image-resize" src="{{POST.thumbnail.url}}">
-    {% else %}
-          <img alt="" src="{{ POST.thumbnail.url }}"> 
     {% endif %}  
-      <style>
-img {
-  width: 100%;
-  height: 50%;
-}
-</style>
       
       <div class="card-body" style="background-color: ghostwhite">
         <h3 class="mb-0">{{POST.title|capfirst}}</h3>
