@@ -18,7 +18,7 @@ class post(models.Model):
     
     
 
-    thumbnail=models.ImageField(blank='true')
+    thumbnail=models.ImageField( upload_to='media')
 
 
 
