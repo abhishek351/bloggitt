@@ -38,9 +38,9 @@
 {% for POST in page_obj %}
 
 
-       <div class="col">
-    <div class="card h-100">
     {% if POST.thumbnail %}
+      <div class="col">
+        <div class="card h-100">
           <img class= " img-responsive" src="{{POST.thumbnail.url}}">
     {% endif %}  
       
