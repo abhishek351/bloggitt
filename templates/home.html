@@ -38,12 +38,11 @@
 {% for POST in page_obj %}
 
 
-    {% if POST.thumbnail %}
-      <div class="col">
-        <div class="card h-100">
-          <img class= " img-responsive" src="{{POST.thumbnail.url}}" width="355" height="250">
-    {% endif %}  
-      
+  <div class="col">
+      <div class="card h-100">
+   
+        <img class= "img-responsive" src="{{POST.thumbnail.url}}" width="355" height="250">
+    
       <div class="card-body" style="background-color: ghostwhite">
         <h3 class="mb-0">{{POST.title|capfirst}}</h3>
         <small class="text-muted">{{POST.time |date:"D d M Y"}} </small>
