@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from .models import post,profile
-from .forms import contactform,UserUpdateform,ProfileUpdateform
+from .forms import contactform,UserUpdateform,ProfileUpdateform,blogForm
 from django.core.paginator import Paginator
 
 
@@ -28,6 +28,21 @@ def contact(request):
     
     return render(request,'contact.html',{'form':form})
 
+def blogform(request):
+    if  request.user.is_authenticated:
+        user=request.user
+        
+        form = blogForm(request.POST,request.FILES)
+        if form.is_valid():
+                obj=form.save(commit=False)
+                obj.user=user
+                obj.save()
+                messages.success(request,"Your blog has been created")
+                return redirect(home)
+        else:
+            form = blogForm()
+    return render(request, 'blogform.html',{'blogform':form})
+
 
 
 
@@ -37,24 +52,6 @@ def search(request):
     allpost=post.objects.filter(title__contains=find)
     params={'allpost':allpost}
     return render(request,'search.html',params)
-
-def blogform(request):
-    if  request.user.is_authenticated:
-        user=request.user
-        
-        if request.method == 'POST':
-            blogformtitle=request.POST['blogformtitle']
-            blogformdescription=request.POST['blogformdescription']
-            blogformimage=request.POST['blogformimage']
-
-            form =post(title=blogformtitle,thumbnail=blogformimage,desc=blogformdescription)
-            form.user=user
-            form.save()
-            messages.success(request,"Your blog has been created")
-            return redirect(home)
-
-    
-    return render(request,'blogform.html')
 
 
 def delete_blog(request,pk):

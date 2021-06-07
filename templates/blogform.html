@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
 
 {% block body%}
 <center> <h1 class="header my-3" style="font-family: emoji;
@@ -7,29 +9,11 @@
 
 <div class="container my-3">
 
-<form action= ''method="POST">
+<form action= '' method="POST" enctype="multipart/form-data">
 {%csrf_token%}
-<style>
-label {
-    display: inline-block;
-    font-family: cursive;
-    color: mediumblue;
-    font-style: italic;
-}
-</style>
-  <div class="form-group">
-    <label for="title">Blog title:</label>
-    <input type="title" class="form-control" id="blogformtitle"  required name="blogformtitle" placeholder="Enter Your Blog title(Max-length=50)" maxlength="50">
-  </div><br>
 
-  <div class="form-group">
-    <label for="image">Image:</label>
-    <input type="file" required class="form-control-file" id="blogformimage" name="blogformimage">
-  </div><br>
-  <div class="form-group">
-    <label for="description">Blog Description:</label>
-    <textarea class="form-control" required id="blogformdescription" name="blogformdescription" rows="10" placeholder="Enter Your Blog Description"></textarea>
-  </div><br>
+ 
+{{blogform|crispy}}
 
   <center><button type="submit" class="btn btn-success">Submit</button></center>
 </form>

@@ -8,7 +8,10 @@ class contactform(forms.ModelForm):
         model = contact
         fields = "__all__"
 
-
+class blogForm(forms.ModelForm):
+       class Meta:
+        model = post
+        exclude = ('user',)
 
 
 

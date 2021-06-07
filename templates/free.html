@@ -1,3 +1,18 @@
-if  request.user.is_authenticated:
-            user=request.user
-            myform=post.objects.filter(user=user)
+def blogform(request):
+    if  request.user.is_authenticated:
+        user=request.user
+        
+        if request.method == 'POST':
+            blogformtitle=request.POST['blogformtitle']
+            blogformdescription=request.POST['blogformdescription']
+            blogformimage=request.POST['blogformimage']
+
+            form =post(title=blogformtitle,thumbnail=blogformimage,desc=blogformdescription)
+            form.user=user
+            form.save()
+            messages.success(request,"Your blog has been created")
+            return redirect(home)
+
+    
+    return render(request,'blogform.html')
+

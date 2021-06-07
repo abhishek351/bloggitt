@@ -37,7 +37,7 @@ class contact(models.Model):
 
 class profile(models.Model):
     user=models.OneToOneField(User,on_delete=models.CASCADE)
-    image=models.ImageField( upload_to='media')
+    image=models.ImageField( upload_to='media',default='7.png')
     
     
     def __str__(self):
