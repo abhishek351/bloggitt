@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
 
 
 
@@ -104,10 +105,9 @@ DATABASES = {
         'USER': 'postgres',
         'PASSWORD': 'abhi@123',
         'HOST':'localhost',
-        'PORT':'5432'
+        'PORT':'5432',
     }
 }
-
 
 
 # Password validation
