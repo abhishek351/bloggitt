@@ -103,7 +103,7 @@ DATABASES = {
         'NAME': 'blogproject',
         'USER': 'postgres',
         'PASSWORD': 'abhi@123',
-        'HOST':'bloggitt.herokuapp.com',
+        'HOST':'localhost',
         'PORT':'5432'
     }
 }
