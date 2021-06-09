@@ -16,7 +16,7 @@ its backend in django framework.
 
 
 
-git clone https://github.com/abhishek351/bloggitt/ 
+git clone https://github.com/abhishek351/bloggitt 
 
 pip install -r requirements.txt
 
