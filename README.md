@@ -16,8 +16,8 @@ its backend in django framework.
 
 
 
-git clone https://github.com/benigls/instagram.git && cd instagram
-pip install -r requirements/developement.txt
-cd instagram
-./manage syncdb
+git clone https://github.com/abhishek351/bloggitt/ 
+
+pip install -r requirements.txt
+
 ./manage runserver
